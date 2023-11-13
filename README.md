@@ -1,5 +1,5 @@
 # Employee-Tracker 📝 
-This project it's about to build the back end for an e-commerce site by modifying starter code.In this project I have to configure a working Express.js API to use Sequelize to interact with a MySQL database.
+This project it's about to create a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
 ## How is it looks?
 ![22](https://github.com/garmercy/Employee-Tracker/assets/138730100/a929c5db-53f5-4fac-b3dd-9c116c563cbf)
 
