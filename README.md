@@ -1,12 +1,13 @@
-# BreadcrumbsEmployee-Tracker 📝 
+# Employee-Tracker 📝 
 This project it's about to create a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
 
 ## How is it looks?
+![22](https://github.com/garmercy/Employee-Tracker/assets/138730100/a929c5db-53f5-4fac-b3dd-9c116c563cbf)
 
 ## User Story
 _AS A business owner
-I WANT to be able to view and manage the departments, roles, and employees in my company
-SO THAT I can organize and plan my business_
+<br> I WANT to be able to view and manage the departments, roles, and employees in my company
+<br> SO THAT I can organize and plan my business_
 
 ## Acceptance Criteria
 Here are the critical requirements necessary to develop the application:
