@@ -126,3 +126,13 @@ const addRole = () => {
         );
       });
   };
+  
+//Function viewAllDeparments contains a list of the deparments
+const viewAllDepartments = () => {
+    connection.query('SELECT * FROM department', function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      startMenu();
+    });
+  };
+  
