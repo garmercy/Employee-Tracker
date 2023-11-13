@@ -1,4 +1,4 @@
-# BreadcrumbsEmployee-Tracker 📝 
+# Employee-Tracker 📝 
 This project it's about to create a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
 
 ## How is it looks?
