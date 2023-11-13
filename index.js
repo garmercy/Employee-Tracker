@@ -86,3 +86,11 @@ const updateEmployee = () => {
         );
       });
   };
+  //Function viewAllRoles generates a list of total roles
+const viewAllRoles = () => {
+    connection.query('SELECT * FROM job', function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      startMenu();
+    });
+  };
