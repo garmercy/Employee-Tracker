@@ -26,7 +26,7 @@ function init() {
             type: 'list',
             name: 'init',
             message: 'What would you like to do?',
-            choices: ['Update Employee Role','View All roles', 'Add Role', 'View All Departments', 'Add Deparment','View All Employees','Quit'],
+            choices: ['Update Employee Role','View All roles', 'Add Role', 'View All Departments', 'Add Deparment','View All Employees','Add new Employee','Quit'],
             pageSize: 12
         }
     ]).then((answers) => {
@@ -37,34 +37,52 @@ function init() {
                 break;
             case 'Update Employee Role':
                 updateEmployee();
-                //1 update employee
                 break;
             case 'View All roles':
                 viewAllRoles();
-                //2 viewRoles
                 break;
             case 'Add Role':
                 addRole();
-                //3 add role
                 break;
             case 'View All Departments':
                 viewAllDepartments();
-                //4view departments
                 break;
             case 'Add Deparment':
                 addDepartment();
-                //5 add department
                 break;
             case 'View All Employees':
                 viewEmployees();
-                //6view employees
+                break;
+            case 'Add new Employee':
+                addEmployee();
                 break;
         }
     })
 }
-updateEmployee();
-viewAllRoles();
-addRole();
-viewAllDepartments();
-addDepartment();
-viewEmployees();
+//Function updateEmployee updates employee details
+const updateEmployee = () => {
+    inquirer
+      .prompt([
+        {
+          name: 'id',
+          type: 'input',
+          message: 'Enter employee id',
+        },
+        {
+          name: 'jobId',
+          type: 'input',
+          message: 'Enter new job id',
+        },
+      ])
+      .then(answer => {
+        connection.query(
+          'UPDATE employee SET job_id=? WHERE id=?',
+          [answer.jobId, answer.id],
+          function (err, res) {
+            if (err) throw err;
+            console.log('Employee updated!');
+            startMenu();
+          }
+        );
+      });
+  };
