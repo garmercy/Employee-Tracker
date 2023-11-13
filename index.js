@@ -136,3 +136,26 @@ const viewAllDepartments = () => {
     });
   };
   
+
+//Function addDeparment adds a new Deparment
+const addDepartment = () => {
+    inquirer.prompt([
+        {
+          name: 'department',
+          type: 'input',
+          message: 'What is the department name?',
+        },
+      ])
+      .then(answer => {
+        connection.query(
+          'INSERT INTO department (dept_name) VALUES (?)',
+          [answer.department],
+          function (err, res) {
+            if (err) throw err;
+            console.log('Department added!');
+            startMenu();
+          }
+        );
+      });
+  };
+  
