@@ -1,20 +1,16 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql');
 const cTable = require('console.table');
-const commaNumber = require('comma-number');
-const Department = require(__dirname + '/classes/Department.js');
-const Role = require(__dirname + '/classes/Role.js');
-const Employee = require(__dirname + '/classes/Employee.js');
 
 //Creating conection with sql
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'rootroot',
+    password: 'pass12word5',
     database: 'company_db'
 });
 
-//First appears a Welcome text and a function init that starts the app.
+//Function init starts the app.
 console.log('\n\nWelcome to the Employee Tracker\n\n===============================');
 connection.connect();
 init();
@@ -81,7 +77,7 @@ const updateEmployee = () => {
           function (err, res) {
             if (err) throw err;
             console.log('Employee updated!');
-            startMenu();
+            init();
           }
         );
       });
@@ -91,7 +87,7 @@ const viewAllRoles = () => {
     connection.query('SELECT * FROM job', function (err, res) {
       if (err) throw err;
       console.table(res);
-      startMenu();
+      init();
     });
   };
   
@@ -121,7 +117,7 @@ const addRole = () => {
           function (err, res) {
             if (err) throw err;
             console.log('Job added!');
-            startMenu();
+            init();
           }
         );
       });
@@ -132,7 +128,7 @@ const viewAllDepartments = () => {
     connection.query('SELECT * FROM department', function (err, res) {
       if (err) throw err;
       console.table(res);
-      startMenu();
+      init();
     });
   };
   
@@ -152,7 +148,7 @@ const addDepartment = () => {
           function (err, res) {
             if (err) throw err;
             console.log('Department added!');
-            startMenu();
+            init();
           }
         );
       });
@@ -165,7 +161,7 @@ const viewEmployees = () => {
       function (err, res) {
         if (err) throw err;
         console.table(res);
-        startMenu();
+        init();
       }
     );
   };
@@ -201,7 +197,7 @@ const addEmployee = () => {
           function (err, res) {
             if (err) throw err;
             console.log('Employee added!');
-            startMenu();
+            init();
           }
         );
       });
