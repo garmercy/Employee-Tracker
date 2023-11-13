@@ -5,8 +5,8 @@ This project it's about to create a command-line application from scratch to man
 
 ## User Story
 _AS A business owner
-I WANT to be able to view and manage the departments, roles, and employees in my company
-SO THAT I can organize and plan my business_
+* I WANT to be able to view and manage the departments, roles, and employees in my company
+* SO THAT I can organize and plan my business_
 
 ## Acceptance Criteria
 Here are the critical requirements necessary to develop the application:
