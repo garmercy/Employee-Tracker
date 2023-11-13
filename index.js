@@ -11,26 +11,20 @@ const connection = mysql.createConnection({
 });
 
 //Function init starts the app.
-console.log('\n\nWelcome to the Employee Tracker\n\n===============================');
+console.log('Welcome to the Employee Tracker');
 connection.connect();
 init();
 
 function init() {
-    console.log('\n\n')
     inquirer.prompt([
         {
             type: 'list',
-            name: 'init',
+            name: 'menu',
             message: 'What would you like to do?',
             choices: ['Update Employee Role','View All roles', 'Add Role', 'View All Departments', 'Add Deparment','View All Employees','Add new Employee','Quit'],
-            pageSize: 12
         }
     ]).then((answers) => {
-        switch(answers.init) {
-            case 'Quit':
-                connection.end();
-                console.log('Goodbye');
-                break;
+        switch(answers.menu) {
             case 'Update Employee Role':
                 updateEmployee();
                 break;
@@ -52,6 +46,10 @@ function init() {
             case 'Add new Employee':
                 addEmployee();
                 break;
+            case 'Quit':
+                connection.end();
+                console.log('Goodbye');
+                break;
         }
     })
 }
@@ -65,15 +63,15 @@ const updateEmployee = () => {
           message: 'Enter employee id',
         },
         {
-          name: 'jobId',
+          name: 'roleId',
           type: 'input',
-          message: 'Enter new job id',
+          message: 'Enter new role id',
         },
       ])
       .then(answer => {
         connection.query(
-          'UPDATE employee SET job_id=? WHERE id=?',
-          [answer.jobId, answer.id],
+          'UPDATE employee SET roles_id=? WHERE id=?',
+          [answer.rolesId, answer.id],
           function (err, res) {
             if (err) throw err;
             console.log('Employee updated!');
@@ -84,7 +82,7 @@ const updateEmployee = () => {
   };
   //Function viewAllRoles generates a list of total roles
 const viewAllRoles = () => {
-    connection.query('SELECT * FROM job', function (err, res) {
+    connection.query('SELECT * FROM roles', function (err, res) {
       if (err) throw err;
       console.table(res);
       init();
@@ -95,9 +93,9 @@ const viewAllRoles = () => {
 const addRole = () => {
     inquirer.prompt([
         {
-          name: 'jobTitle',
+          name: 'roleTitle',
           type: 'input',
-          message: 'What is the job title?',
+          message: 'What is the role title?',
         },
         {
           name: 'salary',
@@ -112,11 +110,11 @@ const addRole = () => {
       ])
       .then(answer => {
         connection.query(
-          'INSERT INTO job (title, salary, department_id) VALUES (?, ?, ?)',
+          'INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)',
           [answer.jobTitle, answer.salary, answer.deptId],
           function (err, res) {
             if (err) throw err;
-            console.log('Job added!');
+            console.log('Role added!');
             init();
           }
         );
